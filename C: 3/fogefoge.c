@@ -3,8 +3,7 @@
 
 #include "fogefoge.h"
 
-// matriz 5 x 10
-struct mapa m;
+MAPA m;
 
 void liberamapa() {
     for (int i = 0; i < m.linhas; i++) {
