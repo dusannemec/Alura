@@ -23,7 +23,7 @@ void liberamapa(MAPA* m);
 void lemapa(MAPA* m);
 void alocamapa(MAPA* m);
 void imprimemapa(MAPA* m);
-void encontramapa(MAPA* m, POSICAO* p, char c);
+int encontramapa(MAPA* m, POSICAO* p, char c);
 int ehvalida(MAPA* m, int x, int y);
 int ehvazio(MAPA* m, int x, int y);
 int podeandar(MAPA* m, int x, int y);
