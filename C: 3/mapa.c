@@ -7,7 +7,7 @@ void andanomapa(MAPA* m, int xorigem, int yorigem, int xdestino, int ydestino) {
     char personagem = m->matriz[xorigem][yorigem];
     
     m->matriz[xdestino][ydestino] = personagem;
-    m->matriz[xorigem][yorigem] = '.';
+    m->matriz[xorigem][yorigem] = VAZIO;
 }
 
 int ehvalida(MAPA* m, int x, int y) {
@@ -15,7 +15,7 @@ int ehvalida(MAPA* m, int x, int y) {
         return 0;
     if (y >= m->colunas)
         return 0;
-    if (m->matriz[x][y] != '.')
+    if (m->matriz[x][y] != VAZIO)
         return 0;
     return 1;
 }
