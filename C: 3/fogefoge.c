@@ -12,26 +12,28 @@ int acabou() {
 }
 
 void move(char direcao) {
+    
+    if (direcao != 'a' && direcao != 's' && direcao != 'w' && direcao != 'd') {
+        return;
+    }
+
+    m.matriz[heroi.x][heroi.y] = '.';
 
     switch (direcao) {
         case 'a':
             m.matriz[heroi.x][heroi.y-1] = '@';
-            m.matriz[heroi.x][heroi.y] = '.';
             heroi.y--;
             break;
         case 'w':
             m.matriz[heroi.x-1][heroi.y] = '@';
-            m.matriz[heroi.x][heroi.y] = '.';
             heroi.x--;
             break;
         case 's':
             m.matriz[heroi.x+1][heroi.y] = '@';
-            m.matriz[heroi.x][heroi.y] = '.';
             heroi.x++;
             break;
         case 'd':
             m.matriz[heroi.x][heroi.y+1] = '@';
-            m.matriz[heroi.x][heroi.y] = '.';
             heroi.y++;
             break;
         default:
