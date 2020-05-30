@@ -33,8 +33,16 @@ int ehvazio(MAPA* m, int x, int y) {
     return m->matriz[x][y] == VAZIO;
 }
 
-int podeandar(MAPA* m, int x, int y) {
-    return ehvazio(m, x, y) && ehvalida(m, x, y);
+int ehparede(MAPA* m, int x, int y) {
+    return m->matriz[x][y] == PAREDE_HORIZONTAL || m->matriz[x][y] == PAREDE_VERTICAL;
+}
+
+int ehpersonagem(MAPA* m, char personagem, int x, int y) {
+    return m->matriz[x][y] == personagem;
+}
+
+int podeandar(MAPA* m, char personagem, int x, int y) {
+    return !ehparede(m, x, y) && ehvalida(m, x, y) && !ehpersonagem(m, personagem, x, y);
 }
 
 int encontramapa(MAPA* m, POSICAO* p, char c) {
