@@ -29,23 +29,76 @@ void lemapa() {
         exit(1);
     }
 
+    fscanf(f, "%d %d", &linhas, &colunas);
     alocamapa();
 
-    fscanf(f, "%d %d", &linhas, &colunas);
-    printf("linhas %d colunas %d\n", linhas, colunas);
-    
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < linhas; i++) {
         fscanf(f, "%s", mapa[i]);
     }
     fclose(f);
 }
 
+void imprimemapa() {
+    for (int i = 0; i < linhas; i++) {
+        printf("%s\n", mapa[i]);
+    }
+}
+
+int acabou() {
+    return 0;
+}
+
+void ache (int* x, int* y) {
+    for (int i = 0; i < linhas; i++) {
+        for (int j = 0; j < colunas; j++) {
+            if (mapa[i][j] == '@') {
+                *x = i;
+                *y = j;
+                break;
+            }
+        }
+    }
+}
+
+void move(char direcao) {
+    int x;
+    int y;
+
+    ache(&x, &y);
+
+    switch (direcao) {
+        case 'a':
+            mapa[x][y-1] = '@';
+            mapa[x][y] = '.';
+            break;
+        case 'w':
+            mapa[x-1][y] = '@';
+            mapa[x][y] = '.';
+            break;
+        case 's':
+            mapa[x+1][y] = '@';
+            mapa[x][y] = '.';
+            break;
+        case 'd':
+            mapa[x][y+1] = '@';
+            mapa[x][y] = '.';
+            break;
+        default:
+            break;
+    }
+
+}
+
 int main() {
     lemapa();
 
-    for (int i = 0; i < 5; i++) {
-        printf("%s\n", mapa[i]);
-    }
+    do {
+        imprimemapa();
+
+        char comando;
+        scanf(" %c", &comando);
+        move(comando);
+    } while(!acabou());
 
     liberamapa();    
 }
