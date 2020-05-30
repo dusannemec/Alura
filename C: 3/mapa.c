@@ -33,6 +33,10 @@ int ehvazio(MAPA* m, int x, int y) {
     return m->matriz[x][y] == VAZIO;
 }
 
+int podeandar(MAPA* m, int x, int y) {
+    return ehvazio(m, x, y) && ehvalida(m, x, y);
+}
+
 void encontramapa(MAPA* m, POSICAO* p, char c) {
     for (int i = 0; i < m->linhas; i++) {
         for (int j = 0; j < m->colunas; j++) {
