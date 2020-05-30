@@ -1,4 +1,5 @@
 #define HEROI '@'
+#define FANTASMA 'F'
 #define VAZIO '.'
 #define PAREDE_VERTICAL '|'
 #define PAREDE_HORIZONTAL '-'
@@ -25,3 +26,5 @@ void imprimemapa(MAPA* m);
 void encontramapa(MAPA* m, POSICAO* p, char c);
 int ehvalida(MAPA* m, int x, int y);
 void andanomapa(MAPA* m, int xorigem, int yorigem, int xdestino, int ydestino);
+int ehvazio(MAPA* m, int x, int y);
+void copiamapa(MAPA* destino, MAPA* origem);
