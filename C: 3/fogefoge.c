@@ -7,6 +7,7 @@
 
 MAPA m;
 POSICAO heroi;
+int tempilula = 0;
 
 int praondefantasmavai(int xatual, int yatual, int* xdestino, int* ydestino) {
     int opcoes[4][2] = {
@@ -91,6 +92,10 @@ void move(char direcao) {
     if (!podeandar(&m, HEROI, proximox, proximoy)) {
         return;
     }
+
+    if(ehpersonagem(&m, PILULA, proximox, proximoy)) {
+        tempilula = 1;
+    }
     
     andanomapa(&m, heroi.x, heroi.y, proximox, proximoy);
 
@@ -98,17 +103,23 @@ void move(char direcao) {
     heroi.y = proximoy;
 }
 
+void explodepilula() {
+    printf("Explodiu!\n");
+}
+
 int main() {
     lemapa(&m);
     encontramapa(&m, &heroi, HEROI);
 
     do {
+        printf("Tem pilula: %s\n", (tempilula ? "SIM" : "NÃO"));
         imprimemapa(&m);
 
         char comando;
         scanf(" %c", &comando);
         move(comando);
-
+        if (comando == BOMBA)
+            explodepilula();
         fantasmas();
     } while(!acabou());
 
