@@ -4,6 +4,7 @@
 
 #include "fogefoge.h"
 #include "mapa.h"
+#include "ui.h"
 
 MAPA m;
 POSICAO heroi;

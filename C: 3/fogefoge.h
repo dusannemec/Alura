@@ -1,3 +1,6 @@
+#ifndef _FOGEFOGE_H_
+#define _FOGEFOGE_H_
+
 #define CIMA 'w'
 #define BAIXO 's'
 #define ESQUERDA 'a'
@@ -11,3 +14,5 @@ void imprimemapa();
 int ehdirecao(char direcao);
 void explodepilula();
 void explodepilulaaux(int x, int y, int somax, int somay, int qtd);
+
+#endif
