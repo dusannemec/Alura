@@ -10,3 +10,4 @@ int acabou();
 void imprimemapa();
 int ehdirecao(char direcao);
 void explodepilula();
+void explodepilulaaux(int x, int y, int somax, int somay, int qtd);

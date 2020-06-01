@@ -104,14 +104,24 @@ void move(char direcao) {
 }
 
 void explodepilula() {
-    for (int i = 1; i <= 3; i++) {
-        if(ehvalida(&m, heroi.x, heroi.y+i)) {
-            if (ehparede(&m, heroi.x, heroi.y+i)) {
-                break;
-            }
-            m.matriz[heroi.x][heroi.y+i] = VAZIO;
-        }
-    }
+    explodepilulaaux(heroi.x, heroi.y, 0, 1, 3);
+    explodepilulaaux(heroi.x, heroi.y, 0, -1, 3);
+    explodepilulaaux(heroi.x, heroi.y, 1, 0, 3);
+    explodepilulaaux(heroi.x, heroi.y, -1, 0, 3);
+}
+
+void explodepilulaaux(int x, int y, int somax, int somay, int qtd) {
+    if (qtd == 0) return;
+
+    int novox = x + somax;
+    int novoy = y + somay;
+    
+    if (!ehvalida(&m, novox, novoy)) return;
+    if (ehparede(&m, novox, novoy))  return;
+
+    tempilula = 0;
+    m.matriz[novox][novoy] = VAZIO;
+    explodepilulaaux(novox, novoy, somax, somay, qtd - 1);
 }
 
 int main() {
@@ -125,7 +135,7 @@ int main() {
         char comando;
         scanf(" %c", &comando);
         move(comando);
-        if (comando == BOMBA)
+        if (comando == BOMBA && tempilula == 1)
             explodepilula();
         fantasmas();
     } while(!acabou());
