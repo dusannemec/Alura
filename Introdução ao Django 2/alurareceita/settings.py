@@ -76,8 +76,12 @@ WSGI_APPLICATION = 'alurareceita.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'AluraDB',
+        'USER' : 'foo_user',
+        'PASSWORD' : 'fooihopethisshitworks',
+        'HOST': 'localhost',
+        'PORT': '3306'
     }
 }
 
