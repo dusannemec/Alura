@@ -1,0 +1,17 @@
+.pessoa-imagem {
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+}
+
+.pessoa-imagem-roberta {
+    background-image: url('../../img/pessoas/roberta.jpg');
+}
+
+.pessoa-imagem-marcela {
+    background-image: url('../../img/pessoas/marcela.jpg');
+}
+
+.pessoa-imagem-andreia {
+    background-image: url('../../img/pessoas/andreia.jpg');
+}
